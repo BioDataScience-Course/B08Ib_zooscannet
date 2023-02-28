@@ -10,9 +10,9 @@ SciViews::R
 ## Création du dossier data/ et du dossier data_raw/
 fs::dir_create("data/data_raw/")
 ## Importation des données et ajout dans le cache.
-taxa <- read$csv("https://filedn.com/lzGVgfOGxb6mHFQcRn9ueUb/ZooScanNet/taxa.csv.xz",
+taxa <- read$csv(___,
   cache_file = "data/data_raw/taxa.csv.xz")
-features <- read$csv("https://filedn.com/lzGVgfOGxb6mHFQcRn9ueUb/ZooScanNet/features_native.csv.xz",
+features <- read$csv(___,
   cache_file = "data/data_raw/features_native.csv.xz")
 
 # Sélection des 3 groupes d'intérêt dans `taxa` ----

@@ -11,7 +11,9 @@ output: html_document
 
 # But
 
-Discriminez 2 groupes d'organismes planctonique sur base de relation proie-prédateur \# Analyses
+Les trois groupes d'organismes planctoniques sélectionnés ont été choisis sur base d'interaction proie-prédateur. L'objectif est de discriminer les trois groupes sur base d'analyse d'images.
+
+# Analyses
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -39,11 +41,10 @@ SciViews::R("explore")
 
 <!--% Interprétez les graphiques ou tableaux ci-dessus en 4 phrases.-->
 
-<!--% Réalisez votre AFM dans l'objet `plancton_mfa` et résumez le ensuite. Décrivez ce que vous obtenez en 2 à 3 phrases maximum. -->
+<!--% Réalisez votre AFM dans l'objet `plancton_mfa` et résumez-le ensuite. Décrivez ce que vous obtenez en 2 à 3 phrases maximum. -->
 
 ```{r mfa}
-___ <- mfa(___)
-summary(___)
+___
 ```
 
 <!--%  Réalisez le graphique des éboulis, le graphique la répartition des variables dans l'espace, le graphique de la répartition des composantes principales dans l'espace et le graphique de la relation des groupes.-->
@@ -59,6 +60,6 @@ summary(___)
 ```{r mfa_individus}
 ```
 
-<!--% Interprétez en 5 à 6 phrases la répartition des individus dans l'espace. Faites des liens au observations réalisé sur les graphiques précédents. -->
+<!--% Interprétez en 5 à 6 phrases la répartition des individus dans l'espace. Faites des liens entre vos observations et les graphiques précédents. -->
 
-# Conclusion
+
