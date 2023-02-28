@@ -1,0 +1,64 @@
+---
+title: "____"
+author: "___"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Introduction
+
+<!--% Proposez un paragraphe sur les données ZooScanNet et un paragraphe sur les stratégies à employer sur de larges tableaux de données. -->
+
+# But
+
+Discriminez 2 groupes d'organismes planctonique sur base de relation proie-prédateur \# Analyses
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Package d'intérêts
+SciViews::R("explore")
+```
+
+<!--% Importez le tableau de données compressé `zsn_sub.csv` que vous avez généré dans le script R. -->
+
+```{r import}
+
+```
+
+<!--% Réalisez un graphique ou un tableau résumé utilisant les variables associées à la géométrie des particules. -->
+
+```{r biometrics1}
+
+```
+
+<!--% Réalisez un graphique ou un tableau résumé utilisant les variables associées à l'intensité de gris des particules. -->
+
+```{r greys1}
+
+```
+
+<!--% Interprétez les graphiques ou tableaux ci-dessus en 4 phrases.-->
+
+<!--% Réalisez votre AFM dans l'objet `plancton_mfa` et résumez le ensuite. Décrivez ce que vous obtenez en 2 à 3 phrases maximum. -->
+
+```{r mfa}
+___ <- mfa(___)
+summary(___)
+```
+
+<!--%  Réalisez le graphique des éboulis, le graphique la répartition des variables dans l'espace, le graphique de la répartition des composantes principales dans l'espace et le graphique de la relation des groupes.-->
+
+```{r mfa_charts}
+
+```
+
+<!--% Interprétez en 8 phrases les 4 graphiques réalisés. -->
+
+<!--% Produisez maintenant le graphique de la répartition des individus dans l'espace et analysez-le en 3 phrases maximum. -->
+
+```{r mfa_individus}
+```
+
+<!--% Interprétez en 5 à 6 phrases la répartition des individus dans l'espace. Faites des liens au observations réalisé sur les graphiques précédents. -->
+
+# Conclusion
