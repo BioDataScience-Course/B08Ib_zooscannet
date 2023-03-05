@@ -35,7 +35,8 @@ ZooScanNet de ces trois groupes sont disponibles dans le dossier
 `figures/` .
 
 De nombreuses variables sont mesurées ou calculées dans le fichier
-`features.csv.xz`. Chaque variable est brièvement décrite dans Elineau
+`features_native.csv.xz` (et encore d'autres dans `features_skimage.csv.xz` mais nous ne les
+utiliserons pas ici). Chaque variable est brièvement décrite dans Elineau
 et al. (2018) . Deux groupes de variables sont employés pour cette
 étude. Le premier groupe va rassembler des variables morphologiques
 (*area*, *circ.*, *symetrieh*, *perimferet*, *perimmajor*) et le second
