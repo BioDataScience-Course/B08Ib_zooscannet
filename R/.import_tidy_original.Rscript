@@ -60,7 +60,7 @@ table(zsn_sub$taxon)
 write$___(___, "data/zsn_sub.rds")
 
 # Nettoyage de l'environnement
-# Note : normalkement, les données en cache ne sont pas supprimées (c'est le
+# Note : normalement, les données en cache ne sont pas supprimées (c'est le
 # rôle du cache d'éviter de les recharger plus tard). Mais comme la machine
 # SaturnCloud utilisée n'a que de 2Go de disque, nous les effaçons maintenant
 # avec CC() pour éviter de saturer l'espace disque.
