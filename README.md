@@ -14,14 +14,14 @@ Ce projet est individuel et cadré. Il doit vous permettre de démontrer les com
 
 ## Consignes
 
-Vous allez traiter un gros jeu de données relatif à la numérisation de plnacton avec un appareil nommé ZoScan. Parmi les 93 groupes du jeu de données initial qui compte presque 1,5 millions d'entrées, vous allez vous intéresser à trois d’entre eux en particuliers : les [Calanidae](https://econum.github.io/zooimage_mesozooplankton_guide2/copepoda.html), les [nauplies](https://econum.github.io/zooimage_mesozooplankton_guide2/crustacea.html#sec-nauplii) et les [chétognathes](https://econum.github.io/zooimage_mesozooplankton_guide2/chaetognatha.html). Des images exemples de ces trois groupes provenant de ZooScanNet sont disponibles dans le dossier `figures` pour vous faire une idée.
+Vous allez traiter un gros jeu de données relatif à la numérisation de plancton avec un appareil nommé ZooScan. Parmi les 93 groupes du jeu de données initial qui compte presque 1,5 million d'entrées, vous allez vous intéresser à trois d’entre eux en particulier : les [Calanidae](https://econum.github.io/zooimage_mesozooplankton_guide2/copepoda.html), les [nauplies](https://econum.github.io/zooimage_mesozooplankton_guide2/crustacea.html#sec-nauplii) et les [chétognathes](https://econum.github.io/zooimage_mesozooplankton_guide2/chaetognatha.html). Des images d’exemples de ces trois groupes provenant de ZooScanNet sont disponibles dans le dossier `figures` pour vous faire une idée.
 
-De nombreuses variables sont mesurées ou calculées dans le fichier `features.csv.xz`. Chaque variable est brièvement décrite dans Elineau et al. (2018). Deux séries de variables sont employés pour cette étude. La première série va rassembler des variables de **morphométrie** (taille ou forme avec les *area*, *circ.*, *elongation* et *perimmajor*) et la seconde série reprend des variables relatives à la **transparence** (mesure des niveaux de gris tels *median*, *skew*, *kurt*, *range*).
+De nombreuses variables sont mesurées ou calculées dans le fichier `features.csv.xz`. Chaque variable est brièvement décrite dans Elineau et al. (2018). Deux séries de variables sont employées pour cette étude. La première série va rassembler des variables de **morphométrie** (taille ou forme avec les *area*, *circ.*, *elongation* et *perimmajor*) et la seconde série reprend des variables relatives à la **transparence** (mesure des niveaux de gris tels *median*, *skew*, *kurt*, *range*).
 
 Commencez votre travail en complétant le fichier `R/import_tidy.R` et en l'exécutant. Ce script R va vous permettre de réduire les observations aux trois groupes étudiés ainsi qu’aux variables d’intérêts. Les jeux de données complets sont téléchargeables à partir des liens repris ci-dessous :
 
-- Données de taxonomie : <https://filedn.com/lzGVgfOGxb6mHFQcRn9ueUb/ZooScanNet/taxa.csv.xz>
-- Mesures des particules : <https://filedn.com/lzGVgfOGxb6mHFQcRn9ueUb/ZooScanNet/features_native.csv.xz>
+-   Données de taxonomie : <https://filedn.com/lzGVgfOGxb6mHFQcRn9ueUb/ZooScanNet/taxa.csv.xz>
+-   Mesures des particules : <https://filedn.com/lzGVgfOGxb6mHFQcRn9ueUb/ZooScanNet/features_native.csv.xz>
 
 Ensuite, vous réaliserez une analyse factorielle multiple dans `plankton_notebook.qmd` pour voir comment se distribuent les trois groupes taxonomiques ciblés. Utilisez les deux séries de variables **morphométrie** et **transparence** tel qu’expliqué plus haut.
 

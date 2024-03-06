@@ -16,7 +16,7 @@ bibliography: bibliography/references.bib
 
 # Introduction et but
 
-L'automatisation du dénombrement de plancton dans des échantillons est recherché étant donné la quantité de travail qu'un traitement manuel nécessite. ZooScanNet est une série d’images de plancton numérisé à l’aide d’un appareil spécialisé, le ZooScan, qui sert de référence pour comparer les méthodes de classification automatisée de plancton. Les organismes planctoniques ont été échantillonnés dans les différents océans. Les images obtenues sont découpées afin d’en extraire des particules d’intérêt. Ces particules sont ensuite analysées automatiquement (techniques classiques d’analyse d’image) pour en extraire des informations quantitatives telles que la taille, la forme ou la transparence.
+L'automatisation du dénombrement de plancton dans des échantillons est recherchée étant donné la quantité de travail qu'un traitement manuel nécessite. ZooScanNet est une série d’images de plancton numérisé à l’aide d’un appareil spécialisé, le ZooScan, qui sert de référence pour comparer les méthodes de classification automatisée de plancton. Les organismes planctoniques ont été échantillonnés dans les différents océans. Les images obtenues sont découpées afin d’en extraire des particules d’intérêt. Ces particules sont ensuite analysées automatiquement (techniques classiques d’analyse d’image) pour en extraire des informations quantitatives telles que la taille, la forme ou la transparence.
 
 L'objectif est d'étudier la distribution de trois groupes d'intérêt de plancton (nauplies de crustacés, calanidés et chétognathes), par rapport à ces variables obtenues par analyse d'image (que l'on appelle des "attributs" en classification).
 
@@ -26,7 +26,7 @@ Le set ZooScanNet est constitué de 1.443.278 images découpées, analysées et 
 
 -   Des attributs de taille et de forme comme la surface de la particule à l'image `area`, sa circularité `circ.`, son `elongation`, sa complexité relative mesurée comme son périmètre divisé par son axe majeur `perimmajor`.
 
--   Des attributs de transparence avec le niveau de gris `median`, la distribution des niveaux de gris à travers l'asymétrie de la distribution `skew` ou son applatissement `kurt` en comparaison à une distribution normale, ainsi que la plage des niveaux de gris `range`.
+-   Des attributs de transparence avec le niveau de gris `median`, la distribution des niveaux de gris à travers l'asymétrie de la distribution `skew` ou son aplatissement `kurt` en comparaison à une distribution normale, ainsi que la plage des niveaux de gris `range`.
 
 L'analyse est réalisée avec le logiciel R (`r R.version.string`) et en particulier le package {exploreit} version `r packageVersion("exploreit")` dans la [SciViews Box 2023](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io/) (Linux Ubuntu 22.04) est utilisé pour exécuter le code et compiler la version HTML de ce bloc-notes.
 
@@ -192,7 +192,7 @@ select_answer(r"-{
 
 # Discussion et conclusions
 
-<!--% Concluez votre travail en deux phrases en indiquant si vons considérez que l'AFM est utile ici par rapport à l'objectif fixé, ainsi que par rapport à la perspective d'une classification automatisée de ce plancton. La seconde phrase doit commenter l'importation et la réduction du jeu de données opérées dans le script `R/import_tidy.R`. -->
+<!--% Concluez votre travail en deux phrases en indiquant si vous considérez que l'AFM est utile ici par rapport à l'objectif fixé, ainsi que par rapport à la perspective d'une classification automatisée de ce plancton. La seconde phrase doit commenter l'importation et la réduction du jeu de données opérées dans le script `R/import_tidy.R`. -->
 
 ...Votre discussion ici...
 
