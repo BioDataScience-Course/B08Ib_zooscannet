@@ -1,82 +1,32 @@
-Analyse du plancton avec le ZooScan.
-================
+# Analyse de plancton avec le ZooScan
 
-<!-- DO NOT EDIT README.md -->
+## Avant-propos
 
-# Introduction
+Vous devez avoir assimilé l’ensemble des notions du module 8 du cours de science des données biologiques 2. Ce projet correspond au template <https://github.com/BioDataScience-Course/B08Ib_zooscannet>. Il est distribué sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-Le ZooScanNet est une série d’informations collectées sur des organismes
-planctoniques échantillonnés dans de nombreux océans dans le monde. Ces
-échantillons ont été scannés à l’aide du ZooScan. Les images obtenues
-sont découpées afin d’extraire des particules d’intérêt. On dénombre
-1443278 images labélisées en 93 groupes (Elineau et al. 2018).
+## Objectifs
 
-# Objectifs
+Ce projet est individuel et cadré. Il doit vous permettre de démontrer les compétences suivantes :
 
-Ce projet est individuel et cadré. Il doit vous permettre de démontrer
-les compétences suivantes :
+-   Être capable de traiter des jeux de données volumineux
+-   Maîtriser la sélection et le filtrage des observations pour réduire la taille du tableau
+-   Réaliser une analyse factorielle multiple sur ce dernier tableau
 
--   être capable de traiter des jeux de données volumineux.
--   être capable de sélectionner et filtrer les observations afin d’en
-    extraire des données utiles et raisonnables à la réalisation d’une
-    analyse factorielle multiple.
+## Consignes
 
-# Consignes
+Vous allez traiter un gros jeu de données relatif à la numérisation de plnacton avec un appareil nommé ZoScan. Parmi les 93 groupes du jeu de données initial qui compte presque 1,5 millions d'entrées, vous allez vous intéresser à trois d’entre eux en particuliers : les [Calanidae](https://econum.github.io/zooimage_mesozooplankton_guide2/copepoda.html), les [nauplies](https://econum.github.io/zooimage_mesozooplankton_guide2/crustacea.html#sec-nauplii) et les [chétognathes](https://econum.github.io/zooimage_mesozooplankton_guide2/chaetognatha.html). Des images exemples de ces trois groupes provenant de ZooScanNet sont disponibles dans le dossier `figures` pour vous faire une idée.
 
-Parmi les 93 groupes, vous allez vous intéresser à 3 groupes
-particuliers, les
-[Calanidae](https://econum.github.io/zooimage_mesozooplankton_guide2/copepoda.html),
-les
-[nauplies](https://econum.github.io/zooimage_mesozooplankton_guide2/crustacea.html#sec-nauplii)
-et les
-[chétognathes](https://econum.github.io/zooimage_mesozooplankton_guide2/chaetognatha.html)
-afin de discriminer ces groupes d’organismes. Des images provenant du
-ZooScanNet de ces trois groupes sont disponibles dans le dossier
-`figures/` .
+De nombreuses variables sont mesurées ou calculées dans le fichier `features.csv.xz`. Chaque variable est brièvement décrite dans Elineau et al. (2018). Deux séries de variables sont employés pour cette étude. La première série va rassembler des variables de **morphométrie** (taille ou forme avec les *area*, *circ.*, *elongation* et *perimmajor*) et la seconde série reprend des variables relatives à la **transparence** (mesure des niveaux de gris tels *median*, *skew*, *kurt*, *range*).
 
-De nombreuses variables sont mesurées ou calculées dans le fichier
-`features_native.csv.xz` (et encore d'autres dans `features_skimage.csv.xz` mais nous ne les
-utiliserons pas ici). Chaque variable est brièvement décrite dans Elineau
-et al. (2018) . Deux groupes de variables sont employés pour cette
-étude. Le premier groupe va rassembler des variables morphologiques
-(*area*, *circ.*, *symetrieh*, *perimferet*, *perimmajor*) et le second
-groupe comprend des variables associées au niveau de gris (*median*,
-*skew*, *kurt*, *range*).
+Commencez votre travail en complétant le fichier `R/import_tidy.R` et en l'exécutant. Ce script R va vous permettre de réduire les observations aux trois groupes étudiés ainsi qu’aux variables d’intérêts. Les jeux de données complets sont téléchargeables à partir des liens repris ci-dessous :
 
-Débutez votre travail par compléter le fichier `R/import_tidy.R`. Ce
-fichier va vous permettre de réduire les observations aux trois groupes
-étudiés ainsi qu’aux variables d’intérêts. Les tableaux de données sont
-téléchargeables ci-dessous :
+- Données de taxonomie : <https://filedn.com/lzGVgfOGxb6mHFQcRn9ueUb/ZooScanNet/taxa.csv.xz>
+- Mesures des particules : <https://filedn.com/lzGVgfOGxb6mHFQcRn9ueUb/ZooScanNet/features_native.csv.xz>
 
--   lien vers les données de taxonomie :
-    <https://filedn.com/lzGVgfOGxb6mHFQcRn9ueUb/ZooScanNet/taxa.csv.xz>
--   lien vers les mesures associées aux particules :
-    <https://filedn.com/lzGVgfOGxb6mHFQcRn9ueUb/ZooScanNet/features_native.csv.xz>
+Ensuite, vous réaliserez une analyse factorielle multiple dans `plankton_notebook.qmd` pour voir comment se distribuent les trois groupes taxonomiques ciblés. Utilisez les deux séries de variables **morphométrie** et **transparence** tel qu’expliqué plus haut.
 
-Réalisez une analyse factorielle multiple afin de discriminer les trois
-groupes. Utilisez deux groupes de variables relatives à la biométrie et
-au niveau de gris. Complétez le fichier `docs/plankton_notes.Rmd`.
+N’oubliez pas de compiler la version finale HTML du document avec le bouton "Rendu". Cela doit se faire sans erreur (très important !). Vous avez également une batterie de tests à votre disposition à partir de l’onglet "Construire" -\> bouton "Construire tout". Vérifiez également que votre dernier commit a bien été pushé sur GitHub avant la deadline.
 
-N’oubliez pas de “knitter” le document en HTML à la fin pour vérifier
-que tout fonctionne bien, et corrigez les erreurs éventuelles
-rencontrées à ce stade avant de clôturer votre travail. Vérifiez
-également que votre dernier commit a bien été pushé sur GitHub avant la
-deadline.
+## Bibliographie
 
-Ce projet correspond au template:
-<https://github.com/BioDataScience-Course/B08Ia_zooscannet>
-
-# Bibliographie
-
-<div id="refs" class="references csl-bib-body hanging-indent">
-
-<div id="ref-elineau2018" class="csl-entry">
-
-Elineau, Amanda, Corinne Desnos, Laetitia Jalabert, Marion Olivier,
-Jean-Baptiste Romagnan, Manoela Costa Brandao, Fabien Lombard, et al.
-2018. « ZooScanNet: plankton images captured with the ZooScan ».
-<https://doi.org/10.17882/55741>.
-
-</div>
-
-</div>
+Elineau, A, C Desnos, L Jalabert, M Olivier, J-B Romagnan, M Costa Brandao, F Lombard, et al. 2018. « ZooScanNet: plankton images captured with the ZooScan ». <https://doi.org/10.17882/55741>.

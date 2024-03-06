@@ -1,0 +1,201 @@
+---
+title: "Analyse du plancton avec le ZooScan"
+author: "___"
+date: "`r Sys.Date()`"
+format:
+  html:
+    code-fold: true
+    code-tools: true
+    toc: true
+editor: visual
+lang: fr
+editor_options: 
+  chunk_output_type: inline
+bibliography: bibliography/references.bib
+---
+
+# Introduction et but
+
+L'automatisation du dénombrement de plancton dans des échantillons est recherché étant donné la quantité de travail qu'un traitement manuel nécessite. ZooScanNet est une série d’images de plancton numérisé à l’aide d’un appareil spécialisé, le ZooScan, qui sert de référence pour comparer les méthodes de classification automatisée de plancton. Les organismes planctoniques ont été échantillonnés dans les différents océans. Les images obtenues sont découpées afin d’en extraire des particules d’intérêt. Ces particules sont ensuite analysées automatiquement (techniques classiques d’analyse d’image) pour en extraire des informations quantitatives telles que la taille, la forme ou la transparence.
+
+L'objectif est d'étudier la distribution de trois groupes d'intérêt de plancton (nauplies de crustacés, calanidés et chétognathes), par rapport à ces variables obtenues par analyse d'image (que l'on appelle des "attributs" en classification).
+
+# Matériel et méthodes
+
+Le set ZooScanNet est constitué de 1.443.278 images découpées, analysées et labélisées en 93 groupes taxonomiques [@elineau2018]. Il est distribué sous licence CC-BY-NC avec le DOI [10.17882/55741](https://doi.org/10.17882/55741). Nous traiterons des 200 premiers individus des trois groupes cibles pour neuf attributs répartis en deux groupes :
+
+-   Des attributs de taille et de forme comme la surface de la particule à l'image `area`, sa circularité `circ.`, son `elongation`, sa complexité relative mesurée comme son périmètre divisé par son axe majeur `perimmajor`.
+
+-   Des attributs de transparence avec le niveau de gris `median`, la distribution des niveaux de gris à travers l'asymétrie de la distribution `skew` ou son applatissement `kurt` en comparaison à une distribution normale, ainsi que la plage des niveaux de gris `range`.
+
+L'analyse est réalisée avec le logiciel R (`r R.version.string`) et en particulier le package {exploreit} version `r packageVersion("exploreit")` dans la [SciViews Box 2023](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io/) (Linux Ubuntu 22.04) est utilisé pour exécuter le code et compiler la version HTML de ce bloc-notes.
+
+# Résultats
+
+```{r setup, include=FALSE}
+# Ceci est nécessaire pour les tests SDD, ne pas utiliser dans un "vrai" projet
+if (!"tools:tests" %in% search())
+  source(here::here("tests/tools_tests.R"), attach(NULL, name = "tools:tests"))
+
+# Configuration de l'environnement SciViews::R
+SciViews::R(___, lang = "fr")
+```
+
+## Description des données
+
+La réduction du jeu de données initial est réalisée dans le script `R/import_tidy.R`. Voici les caractéristiques principales des données réduites.
+
+<!--% Importez le tableau de données `zsn_sub.rds` que vous avez généré avec le script `R/import_tidy.R` dans `plancton` et décrivez les données à l'aide de la fonction `skimr::skim()`. -->
+
+```{r import, record='RODFS', object='plancton'}
+plancton <- ___
+___
+```
+
+Les corrélations entre les attributs sont présentées ci-dessous :
+
+<!--% Réalisez un graphique des corrélations entre les variables numériques. -->
+
+```{r corrplot, record='ROMD5', object='plancton_corr'}
+plancton_corr <- ___
+___(plancton_corr)
+```
+
+<!--% Interprétez vos tableaux et votre graphique des corrélations ci-dessous. -->
+
+```{r desccomment, output='asis'}
+select_answer(r"-{
+[] -   Ce jeu de données ne contient aucune valeur manquante.
+[] -   Certaines valeurs sont manquantes dans ce jeu de données.
+
+[] -   Ce tableau inclut uniquement des variables numériques, réparties en deux ensembles : l’un pour les variables de taille et de forme et l’autre pour les variables de transparence.
+[] -   Le tableau comporte une colonne relative aux groupes taxonomiques, ainsi que deux ensembles de variables : l’un pour les variables de taille et de forme et l’autre pour les variables de transparence.
+
+[] -   Les valeurs médianes sont similaires entre les variables numériques.
+[] -   Les valeurs médianes diffèrent considérablement entre les variables numériques.
+
+[] -   Les coefficients de corrélation de Pearson entre les variables quantitatives sont très faibles, parfois positifs, parfois négatifs.
+[] -   Les coefficients de corrélation de Pearson entre les attributs sont élevés. Certains sont positifs, d'autres négatifs.
+[] - Les coefficients de corrélation de Pearson entre les variables quantitatives sont très variables et tantôt positifs, tantôt négatifs.
+[] -   La corrélation la plus forte est entre `skew` et `kurt`.
+[] -   La corrélation la plus forte est inverse entre `skew` et `kurt`.}-")
+```
+
+## Ordination
+
+Nous réalisons une MFA avec les deux groupes d'attributs nommés "taille_forme" et "transparence". Les taxons sont ajoutés en variable supplémentaire.
+
+<!--% Réalisez votre AFM et placez-là dans `plancton_mfa`. Ensuite, affichez le résumé de votre analyse. Utilisez `taxon` comme variable supplémentaire. Nommez vos groupes de variables "taille_forme", "transparence" et "taxon". -->
+
+```{r mfa, record='ROP', object='plancton_mfa', arg='group'}
+plancton_mfa <- ___
+___
+```
+
+<!--% Tracez le graphique des éboulis de votre AFM. -->
+
+```{r screemfa, record='RNP', arg='labels'}
+___
+```
+
+<!--% Interprétez le résumé de l'AFM et de son graphique des éboulis. -->
+
+```{r screemfacomment, output='asis'}
+select_answer(r"-{
+[] -   Le premier axe de l'AFM représente la quasi totalité de la variance. Il y a un effet saturant marqué.
+[] -   Le premier axe de l'AFM reprend presque la moitié de la variance.
+  
+[] -   Le second axe de l'AFM couvre un quart la variance.
+[] -   Le second axe de l'AFM couvre 70% de la variance.
+
+[] -   Le premier plan de l'AFC reprend 70% de la variance totale, mais cela est totalement insuffisant.
+[] -   Le premier plan de l'AFM reprend 70% de la variance totale, ce qui est acceptable pour notre analyse.
+[] -   Le premier plan de l'AFC reprend 70% de la variance totale, et nous nous en contenterons.}-")
+```
+
+Nous conservons le premier plan de notre AFM avec un peu plus de 70% de la variance totale reprise dans ce plan. L'étude des variables initiales et leur corrélation avec ce premier plan de l'AFM est réalisée ci-dessous.
+
+<!--%  Réalisez le graphique des variables dans le premier plan de l'AFM. -->
+
+```{r loadingsmfa, record='RNP', arg='labels'}
+___
+```
+
+<!--% Interprétez ce graphique. -->
+
+```{r loadingsmfacomment, output='asis'}
+select_answer(r"-{
+[] -   Toutes les variables sont bien représentées dans le plan de l’AFM.
+[] -   Quelques variables sont mal représentées dans le plan de l’AFM.
+
+[] -   Pour la taille et la forme, la surface (`area`) et l'élongation sont corrélées entre elles, ainsi qu'avec le premier axe de l'AFM. `perimmajor` et la circularité ne sont ni corrélées entre elles, ni avec les deux premiers axes de l'AFM.
+[] -   Pour la taille et la forme, la surface (`area`) et l'élongation sont corrélées entre elles, ainsi qu'avec le premier axe de l'AFM. `perimmajor` n'est pas corrélé avec les deux premiers, mais bien avec le second axe de l'AFM. Enfin, la circularité est entre les deux premiers axes de l'AFM.
+[] -   Pour la taille et la forme, la surface (`area`) et l'élongation sont corrélées entre elles, ainsi qu'avec le premier axe de l'AFM. `perimmajor` n'est pas corrélé avec les deux premiers, mais bien avec le second axe de l'AFM. Enfin, la circularité est plutôt inversément corrélée avec `perimmajor`ainsi que le second axe de l'AFM.
+
+[] -   Pour la transparence, `kurt` et `skew` sont inversément corrélées et sont également directement et inversément corrélés, respectivement, avec le premier axe de l'AFM. `median` et `range` sont orthogonaux et non corrélés avec les deux premiers axes de l'AFM.
+[] -   Pour la transparence, `kurt` et les niveaux de gris médians sont corrélés entre eux et avec le premier axe de l'AFM alors que `skew` est invesément corrélée avec ces variables et le premier axe. `range` est orthogonal et plutôt corrélé avec le second axe de l'AFM.
+[] -   Pour la transparence, `kurt` et `median`sont corrélés avec le premeir axe de l'AFM et inversément corrélés avec `skew`. `range` n'est corrélés avec aucune autre variable et aucun des deux premiers axes de l'AFM.
+  
+[] -   Globalement, le premier axe de l'AFM est liée à une taille croissance et une modification de l'histogramme des niveaux de gris tandis que le seoncd axe est moins nettement lié aux variables initiales.
+[] -   Globalement, le premier axe de l'AFM exprime la taille importante, ainsi que l'applatissement de l'histogramme des niveaux de gris vers la droite. Le second axe contraste des particules aux formes plus complexes en haut avec des objets plus circulaires en bas.
+[] -   Globalement, le premier axe de l'AFM capture la taille des particules à droite, ainsi que les déviations de l'histogramme de niveaux de gris. Le second axe est lié à la complexité de la forme de la particule `perimmajor` et l'étalement des niveaux de gris `range`.
+}-")
+```
+
+<!--% Produisez maintenant le graphique qui représente les axes des ACP par groupes par rapport à l'AFM. -->
+
+```{r acpsmfa, record='RNP', arg='labels'}
+___
+```
+
+<!--% Réalisez ci-dessous le graphique qui montre l'association globale des différents groupes avec l'AFM. -->
+
+```{r bygroupsmfa, record='RNP', arg='labels'}
+___
+```
+
+<!--% Interprétez les deux graphiques précédents. -->
+
+```{r bygroupsmfacomment, output='asis'}
+select_answer(r"-{
+[] -   Les premiers axes des deux groupes taille_forme et transparence sont globalement corrélés avec le premier axe de l'AFM tandis que le premier axes des taxons lui est inversément corrélé.
+[] -   Les premiers axes des deux groupes taille_forme et transparence sont globalement corrélés avec le premier axe de l'AFM tandis que le second axes des taxons lui est inversément corrélé.
+
+[] -   Seul le second axe de taille_forme est (inversément) corrélé avec le second axe de l'AFM.
+[] -   Le seocnd axe de transparence est corrélée directement avec le second axes de l'AFM et celui de taille_forme l'est inversément.
+[] -   Le seocnd axe de transparence est corrélée directement avec le second axes de l'AFM et celui de taille_forme l'est inversément. Le premier axe de taxons est également corrélé avec ce second axe de l'AFM.
+
+[] -   Par conséquent, les taxons sont aussi bien expliqu"és par la taille_forme et par la transparence.
+[] -   Les taxons sont plutôt expliqués par le groupe taille_forme que par la transparence, bien que ce dernier joue également un rôle.
+[] -   Les taxons sont expliqués par le groupe taille_forme et pas par la transparence.}-")
+```
+
+À présent que nous avons explicité ce que représente le premier plan de notre AFM, voyons comment les particules planctoniques des trois taxons ciblés se distribuent dans ce plan.
+
+<!--% Tracez le graphique des individus pour le premier plan de votre AFM. Vous n'utiliserez pas de labels pour les individus (argument `lab.ind = FALSE`), mais vous colorerez les points avec la variable supplémentaire taxon (`habillage = "taxon"`). -->
+
+```{r indmfa, record='RNP', arg='labels'}
+___
+```
+
+<!--% Interprétez ce dernier graphique. -->
+
+```{r indmfacomment, output='asis'}
+select_answer(r"-{
+[] -   Les trois taxons ne sont pas séparés dans le premier plan de l'AFM. C'est mauvais signe pour une classification automatisée de ce plancton.
+[] -   Les trois taxons ne sont pas séparés dans le premier plan de l'AFM, mais nous ne pouvons pas conclure concernant la classification automatisée de ce plancton car l'AFM ne vise pas une telle séparation des groupes.
+[] -   Les trois taxons sont bien séparés dans le premier plan de l'AFM. C'est bon signe pour une classification automatisée de ce plancton.
+[] -   Les trois taxons sont bien séparés dans le premier plan de l'AFM, mais nous ne pouvons pas conclure concernant la classification automatisée de ce plancton car l'AFM ne vise pas une telle séparation des groupes.
+[] -   Les trois taxons sont parfaitement séparés dans le premier plan de l'AFM. La classification automatisée de ces trois taxons devrait se faire sans problème.
+[] -   Les trois taxons sont parfaitement séparés dans le premier plan de l'AFM, mais nous ne pouvons pas conclure concernant la classification automatisée de ce plancton car l'AFM ne vise pas une telle séparation des groupes.}-")
+```
+
+# Discussion et conclusions
+
+<!--% Concluez votre travail en deux phrases en indiquant si vons considérez que l'AFM est utile ici par rapport à l'objectif fixé, ainsi que par rapport à la perspective d'une classification automatisée de ce plancton. La seconde phrase doit commenter l'importation et la réduction du jeu de données opérées dans le script `R/import_tidy.R`. -->
+
+...Votre discussion ici...
+
+# Référence
+
+<!--% Ne rien indiquer ici. La référence bibliographique se placera automatiquement ici.-->
