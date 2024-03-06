@@ -113,7 +113,7 @@ test_that("Chunks 'corrplot', 'desccomment' : description des données", {
 })
 
 test_that("Chunks 'mfa', 'screemfa', 'screemfacomment' : AFM, graphique des éboulis et commentaires", {
-  expect_true(is_identical_to_ref("mfa"))
+  expect_true(is_equal_to_ref("mfa"))
   # L'objet `plankton_mfa` n'est pas créé ou il est incorrect.
   # Avez vous employé une formule adaptée pour spécifier votre AFM ? Vérifiez le
   # code dans ce chunk 'mfa' par rapport à la consigne.

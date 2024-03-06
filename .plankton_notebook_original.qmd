@@ -56,7 +56,7 @@ Les corrélations entre les attributs sont présentées ci-dessous :
 
 <!--% Réalisez un graphique des corrélations entre les variables numériques. -->
 
-```{r corrplot, record='ROMD5', object='plancton_corr'}
+```{r corrplot, record='ROA', object='plancton_corr', arg='dimnames,method,class'}
 plancton_corr <- ___
 ___(plancton_corr)
 ```
@@ -87,7 +87,7 @@ Nous réalisons une MFA avec les deux groupes d'attributs nommés "taille_forme"
 
 <!--% Réalisez votre AFM et placez-là dans `plancton_mfa`. Ensuite, affichez le résumé de votre analyse. Utilisez `taxon` comme variable supplémentaire. Nommez vos groupes de variables "taille_forme", "transparence" et "taxon". -->
 
-```{r mfa, record='ROP', object='plancton_mfa', arg='group'}
+```{r mfa, record='ROP', object='plancton_mfa', arg='eig'}
 plancton_mfa <- ___
 ___
 ```
