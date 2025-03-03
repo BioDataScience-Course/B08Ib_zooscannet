@@ -1,6 +1,6 @@
 # Analyse de plancton avec le ZooScan
 
-## Avant-propos
+R est capable de traiter des jeux de données de plus grande taille que des outils comme Microsoft Excel (par exemple, des tableaux de plusieurs millions de lignes). Vous allez vous confronter à des données sur le plancton plus volumineuses que ce que vous avez traité jusqu'ici. Des précautions particulières seront nécessaires pour traiter correctement ces données dans un projet GitHub.
 
 Vous devez avoir assimilé l’ensemble des notions du module 8 du cours de science des données biologiques 2. Ce projet correspond au template <https://github.com/BioDataScience-Course/B08Ib_zooscannet>. Il est distribué sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
@@ -8,7 +8,7 @@ Vous devez avoir assimilé l’ensemble des notions du module 8 du cours de scie
 
 Ce projet est individuel et cadré. Il doit vous permettre de démontrer les compétences suivantes :
 
--   Être capable de traiter des jeux de données volumineux
+-   Être capable de traiter des jeux de données volumineux impossibles à manbipuler avec un tableaur comme Excel
 -   Maîtriser la sélection et le filtrage des observations pour réduire la taille du tableau
 -   Réaliser une analyse factorielle multiple sur ce dernier tableau
 
@@ -18,14 +18,14 @@ Vous allez traiter un gros jeu de données relatif à la numérisation de planct
 
 De nombreuses variables sont mesurées ou calculées dans le fichier `features.csv.xz`. Chaque variable est brièvement décrite dans Elineau et al. (2018). Deux séries de variables sont employées pour cette étude. La première série va rassembler des variables de **morphométrie** (taille ou forme avec les *area*, *circ.*, *elongation* et *perimmajor*) et la seconde série reprend des variables relatives à la **transparence** (mesure des niveaux de gris tels *median*, *skew*, *kurt*, *range*).
 
-Commencez votre travail en complétant le fichier `R/import_tidy.R` et en l'exécutant. Ce script R va vous permettre de réduire les observations aux trois groupes étudiés ainsi qu’aux variables d’intérêts. Les jeux de données complets sont téléchargeables à partir des liens repris ci-dessous :
+Commencez votre travail en complétant le fichier `R/import_tidy.R` et en l'exécutant. Ce script R va vous permettre de réduire les observations aux trois groupes étudiés ainsi qu’aux variables d’intérêt. Les jeux de données complets sont téléchargeables à partir des liens repris ci-dessous :
 
 -   Données de taxonomie : <https://filedn.com/lzGVgfOGxb6mHFQcRn9ueUb/ZooScanNet/taxa.csv.xz>
 -   Mesures des particules : <https://filedn.com/lzGVgfOGxb6mHFQcRn9ueUb/ZooScanNet/features_native.csv.xz>
 
 Ensuite, vous réaliserez une analyse factorielle multiple dans `plankton_notebook.qmd` pour voir comment se distribuent les trois groupes taxonomiques ciblés. Utilisez les deux séries de variables **morphométrie** et **transparence** tel qu’expliqué plus haut.
 
-N’oubliez pas de compiler la version finale HTML du document avec le bouton "Rendu". Cela doit se faire sans erreur (très important !). Vous avez également une batterie de tests à votre disposition à partir de l’onglet "Construire" -\> bouton "Construire tout". Vérifiez également que votre dernier commit a bien été pushé sur GitHub avant la deadline.
+N’oubliez pas de compiler la version finale HTML du document avec le bouton "Rendu". Cela doit se faire sans erreur (très important, sans quoi nous ne pouvons pas donner des points pour ce projet !). Vous avez également une batterie de tests à votre disposition à partir de l’onglet "Construire" -\> bouton "Construire tout". Vérifiez également que votre dernier commit a bien été pushé sur GitHub avant la deadline.
 
 ## Bibliographie
 

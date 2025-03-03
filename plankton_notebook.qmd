@@ -28,7 +28,7 @@ Le set ZooScanNet est constitué de 1.443.278 images découpées, analysées et 
 
 -   Des attributs de transparence avec le niveau de gris `median`, la distribution des niveaux de gris à travers l'asymétrie de la distribution `skew` ou son aplatissement `kurt` en comparaison à une distribution normale, ainsi que la plage des niveaux de gris `range`.
 
-L'analyse est réalisée avec le logiciel R (`r R.version.string`) et en particulier le package {exploreit} version `r packageVersion("exploreit")` dans la [SciViews Box 2023](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io/) (Linux Ubuntu 22.04) est utilisé pour exécuter le code et compiler la version HTML de ce bloc-notes.
+L'analyse est réalisée avec le logiciel R (`r R.version.string`) et en particulier le package {exploreit} version `r packageVersion("exploreit")` dans la [SciViews Box 2024](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io/) (Linux Ubuntu 22.04) est utilisé pour exécuter le code et compiler la version HTML de ce bloc-notes.
 
 # Résultats
 
