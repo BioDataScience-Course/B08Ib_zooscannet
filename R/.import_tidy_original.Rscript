@@ -34,6 +34,7 @@ attr(features, "problems") <- NULL
 attr(features, "comment") <- NULL
 
 # Étape 2 : réduction des données ------------------------------------------
+# Remarque : Utilisez les fonctions speedy dès que possible.
 
 # Sélection des trois groupes d'intérêt dans `taxa`
 sel_taxa <- c(___)
