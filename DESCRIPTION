@@ -1,6 +1,6 @@
 Package: B08Ib_zooscannet
 Type: Package
-Version: 2.0.0
+Version: 2.1.0
 Title: Analyse de plancton avec le ZooScan
 Description: Projet individuel cadré du module 8 du cours SDD II à l'UMONS
 Authors@R: c(
@@ -12,8 +12,8 @@ Authors@R: c(
     comment = c(ORCID = "0000-0001-9514-1014"))
   )
   )
-Depends: R (>= 4.3.3)
-SystemRequirements: SciViews Box 2024 (https://www.sciviews.org/software/svbox/)
+Depends: R (>= 4.4.0)
+SystemRequirements: SciViews Box 2025 (https://www.sciviews.org/software/svbox/)
 License: CC BY-NC-SA 4.0
 URL: https://github.com/BioDataScience-Course/B08Ib_zooscannet
 BugReports: https://github.com/BioDataScience-Course/B08Ib_zooscannet/issues

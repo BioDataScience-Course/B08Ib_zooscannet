@@ -193,11 +193,12 @@ test_that("Chunks 'indmfa', 'indmfacomment' : graphique des individus de l'AFM e
 })
 
 test_that("La partie discussion et conclusion est-elle remplie ?", {
-  expect_true(!(rmd_select(plankton, by_section("Discussion et conclusions")) |>
-      as_document() |> grepl("...Votre discussion ici...", x = _,
-        fixed = TRUE) |> any()))
-  # La discussion et les conclusions ne sont pas faites
-  # Remplacez "...Votre discussion ici..." par vos phrases de commentaires
-  # libres (à noter que le contenu de cette section n'est pas évalué
-  # automatiquement, mais il le sera par vos enseignants).
+  expect_true(is_identical_to_ref("conclu_comment"))
+  # La discussion et les conclusions sont (partiellement)
+  # fausses dans le chunk 'conclu_comment'
+  # Vous devez cochez les phrases qui décrivent le graphique d'un 'x' entre
+  # les crochets [] -> [x]. Ensuite, vous devez recompiler la version HTML du
+  # bloc-notes (bouton 'Rendu') sans erreur pour réactualiser les résultats.
+  # Assurez-vous de bien comprendre ce qui est coché ou pas : vous n'aurez plus
+  # cette aide plus tard dans le travail de groupe ou les interrogations !
 })

@@ -28,18 +28,31 @@ Le set ZooScanNet est constitué de 1.443.278 images découpées, analysées et 
 
 -   Des attributs de transparence avec le niveau de gris `median`, la distribution des niveaux de gris à travers l'asymétrie de la distribution `skew` ou son aplatissement `kurt` en comparaison à une distribution normale, ainsi que la plage des niveaux de gris `range`.
 
-L'analyse est réalisée avec le logiciel R (`r R.version.string`) et en particulier le package {exploreit} version `r packageVersion("exploreit")` dans la [SciViews Box 2024](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io/) (Linux Ubuntu 22.04) est utilisé pour exécuter le code et compiler la version HTML de ce bloc-notes.
-
-# Résultats
+L'analyse est réalisée avec le logiciel R (`r R.version.string`) et en particulier le package {exploreit} version `r packageVersion("exploreit")` dans la [SciViews Box 2025](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io/) (Linux Ubuntu 22.04) est utilisé pour exécuter le code et compiler la version HTML de ce bloc-notes.
 
 ```{r setup, include=FALSE}
 # Ceci est nécessaire pour les tests SDD, ne pas utiliser dans un "vrai" projet
 if (!"tools:tests" %in% search())
   source(here::here("tests/tools_tests.R"), attach(NULL, name = "tools:tests"))
 
+# Configure Knitr pour utiliser AGG comme périphérique graphique
+knitr::opts_chunk$set(dev = "ragg_png")
+
 # Configuration de l'environnement SciViews::R
-SciViews::R(___, lang = "fr")
+SciViews::R("___", lang = "fr")
 ```
+
+<!--% Spécifiez si vous avez employé l'intelligence artificielle dans votre projet. -->
+
+```{r ai_comment, output='asis'}
+select_answer(r"-{
+[] -   Ce document a été rédigé en étant assisté par l'Intelligence Artificielle.
+[] -   Ce document a été rédigé sans recours à l'Intelligence Artificielle.}-")
+```
+
+<!-- Précisez ci-dessous l'utilisation que vous avez faite de l'IA. Citez le modèle utilisé. -->
+
+# Résultats
 
 ## Description des données
 
@@ -165,7 +178,7 @@ select_answer(r"-{
 [] -   Le seocnd axe de transparence est corrélée directement avec le second axes de l'AFM et celui de taille_forme l'est inversément.
 [] -   Le seocnd axe de transparence est corrélée directement avec le second axes de l'AFM et celui de taille_forme l'est inversément. Le premier axe de taxons est également corrélé avec ce second axe de l'AFM.
 
-[] -   Par conséquent, les taxons sont aussi bien expliqu"és par la taille_forme et par la transparence.
+[] -   Par conséquent, les taxons sont aussi bien expliqués par la taille_forme et par la transparence.
 [] -   Les taxons sont plutôt expliqués par le groupe taille_forme que par la transparence, bien que ce dernier joue également un rôle.
 [] -   Les taxons sont expliqués par le groupe taille_forme et pas par la transparence.}-")
 ```
@@ -192,9 +205,29 @@ select_answer(r"-{
 
 # Discussion et conclusions
 
-<!--% Concluez votre travail en deux phrases en indiquant si vous considérez que l'AFM est utile ici par rapport à l'objectif fixé, ainsi que par rapport à la perspective d'une classification automatisée de ce plancton. La seconde phrase doit commenter l'importation et la réduction du jeu de données opérées dans le script `R/import_tidy.R`. -->
+<!--% Concluez votre travail en indiquant si vous considérez que l'AFM est utile ici par rapport à l'objectif fixé. -->
 
-...Votre discussion ici...
+```{r conclu_comment, output='asis'}
+select_answer(r"-{
+[] -   L’AFM permet de synthétiser efficacement l’information issue des attributs de taille/forme et de transparence, en structurant la variance principalement sur les deux premiers axes.
+[] -   L’AFM ne résume pas correctement la variance et ne semble pas adaptée à ces données.
+[] -   L’AFM se révèle difficile à interpréter en raison d’une mauvaise représentation des variables.
+
+[] -   Le premier axe exprime surtout la taille des particules et la structure générale de l’histogramme des niveaux de gris.
+[] -   Le premier axe est dominé par les différences de transparence uniquement.
+[] -   Le premier axe ne montre aucune structuration interprétable.
+
+[] -   Le second axe oppose des objets plus complexes ou allongés à des objets plus circulaires.
+[] -   Le second axe est principalement lié aux taxons, indépendamment des attributs.
+[] -   Le second axe n’apporte aucune information claire sur les variations morphologiques.
+
+[] -   Les trois taxons ciblés montrent une séparation nette dans le premier plan de l’AFM, ce qui est encourageant pour une classification automatisée.
+[] -   Les trois taxons ne sont pas séparés dans le premier plan, ce n'est pas encourageant pour une classification automatisée.
+
+[] -   La réduction du jeu de données opérée dans `R/import_tidy.R` est adaptée à l’objectif et pertinents pour l’ordination et l’exploration.
+[] -   La réduction du jeu de données opérée dans `R/import_tidy.R` retire trop d’information pour une interprétation correcte de l’AFM.
+[] -   La réduction du jeu de données n’a pas d’impact notable sur la qualité de l’AFM.}-")
+```
 
 # Référence
 
